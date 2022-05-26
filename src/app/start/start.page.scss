@@ -1,0 +1,76 @@
+.page-centered-element {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.content{
+  background-color: black;
+  padding: 20px;
+  border-radius: 5px;
+}
+.css-374sxd {
+    margin: 0px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 1.28571rem;
+    line-height: 1.334;
+    letter-spacing: 0em;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.glow {
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa, 0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa;
+}
+.css-r06jrn > :not(style) + :not(style) {
+  margin: 8px 0px 0px;
+}
+.css-ssdyf {
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 0.857143rem;
+  line-height: 1.4375em;
+  letter-spacing: 0.00938em;
+  padding: 0px;
+  position: relative;
+  display: block;
+  transform-origin: left top;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms, max-width 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+  ion-button{
+    margin-top: 10px;
+    width: 100%;
+    --color: rgb(10, 134, 240);
+    border: 1px solid rgb(10, 134, 240);
+    --background: transparent;
+    border-radius: 5px;
+    font-size: 0.75rem;
+  }
+  ion-input{
+    margin-top: 10px;
+    --background: transparent;
+    background-color: transparent;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    color: white;
+    --padding-start: 20px;
+    font-weight: 100;
+    font-size: 0.75rem;
+  }
+  ion-label{
+    color:rgb(10, 134, 240);
+    text-align: center;
+    font-size: 0.75rem;
+  }

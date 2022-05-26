@@ -1,0 +1,7 @@
+{
+  "name": "p2p",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

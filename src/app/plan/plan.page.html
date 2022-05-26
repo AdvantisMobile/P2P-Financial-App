@@ -1,0 +1,135 @@
+ 
+ <ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-icon (click)="profile()" name="person" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+      <ion-icon (click)="logout()" name="log-out" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title>MY PLAN</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="page-centered-element">
+    <div class="content">
+      <ion-row class="h-row" (click)="showGoal()">
+        <ion-col>
+          <ion-label>Goal</ion-label>
+        </ion-col>
+        <ion-col class="r-col">
+        </ion-col>
+      </ion-row>
+      <div [hidden]="showGoa" class="deatails">
+        <ion-list line="none">
+          <div>
+            <ion-label style="margin-left: 10px;">No Data</ion-label>
+            <div class="item-content">
+              <ion-item (click)="showItemDetails(item)" *ngFor="let item of financialListL;">
+               <div class="item-container" style=" width: 100%;">
+                <ion-row class="h-h-row">
+                  <ion-col>
+                    <ion-label>{{item.name}}</ion-label>
+                  </ion-col>
+                  <ion-col class="r-col">
+                    <ion-label>${{item.amount}}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <div [hidden]="item.show">
+                  <ion-row class="d-row"  *ngFor="let account of item.accounts; let i = index">
+                    <ion-col class="n-col">
+                      {{account.providerName}}
+                    </ion-col>
+                    <ion-col class="in-col">
+                      <div style="color: rgb(10, 134, 240);">{{account.accountType}}</div>
+                      <div style="color: black;">{{account.accountNumber}}</div>
+                    </ion-col>
+                    <ion-col class="b-col">
+                      <div>Balance</div>
+                      <div>${{account.balance.amount}}</div>
+                    </ion-col>
+                    <ion-col class="f-col">
+                      <div>Funds</div>
+                      <div style="color: rgb(10, 134, 240);">${{account.availableBalance.amount}}</div>
+                    </ion-col>
+                    <ion-col class="i-col">
+                      <div class='icon-cont' ><ion-icon (click)="accountDetailsL(account)" name="alert"></ion-icon></div>
+                    </ion-col>
+                  </ion-row>
+                </div>
+               </div>
+              </ion-item>
+            </div>
+          </div>
+        </ion-list>
+          
+      </div>
+
+      <ion-row class="h-row" (click)="showEducation()">
+        <ion-col>
+          <ion-label>EDUCATION & RESEARCH</ion-label>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+      <div [hidden]="showEdu" class="deatails">
+        <ion-list line="none">
+          <div>
+            <div class="item-content">
+              <ion-item (click)="showItemDetails(item)" *ngFor="let item of educations;">
+               <div class="item-container" style="width:100%;">
+                <ion-row class="h-h-row">
+                  <ion-col>
+                    <ion-label>{{item.name}}</ion-label>
+                  </ion-col>
+                </ion-row>
+                <div [hidden]="item.show">
+                  <ion-row class="d-row"  *ngFor="let product of item.products; let i = index">
+                    <ion-col class="n-col">
+                      {{product.name}}
+                    </ion-col>
+                  </ion-row>
+                </div>
+               </div>
+              </ion-item>
+            </div>
+          </div>
+          
+        </ion-list>
+      </div>
+
+      <ion-row class="h-row" (click)="showModels()" >
+        <ion-col>
+         <ion-label>MODELS & PROJECTIONS</ion-label>
+        </ion-col>
+     
+      </ion-row>
+      <div [hidden]="showModel" class="deatails">
+        <!-- <div class="c-header">
+          <div>
+            <p>From Date</p>
+            <ion-input type="date" placeholder="15/02/2022" [(ngModel)]="fromDate"></ion-input>
+          </div>
+          <div style="margin-left: 20px;">
+            <p>To Date</p>
+            <ion-input type="date" placeholder="15/02/2022" [(ngModel)]="toDate"></ion-input>
+          </div>
+        </div> -->
+          
+        <ion-list line="none">
+
+        </ion-list>
+      </div>
+
+      <ion-row class="h-row" (click)="showAdvice()" >
+        <ion-col>
+         <ion-label>ADVICE</ion-label>
+        </ion-col>
+     
+      </ion-row>
+      <div [hidden]="showAdv" class="deatails">
+         <div style="padding: 16px;">
+           No Data
+         </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

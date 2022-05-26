@@ -1,0 +1,79 @@
+ 
+.content{
+    padding: 16px;
+    background-color: rgba(18, 18, 18);
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .header{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 40%;
+        }
+    }
+    .lbl{
+        text-align: center;
+        margin-top: 30px;
+        font-size: 15px;
+        color: white;
+        font-size: 15px;
+    }
+    .input-cont{
+        padding-bottom: 20px;
+        border-bottom: 1px solid darkgray;
+        text-align: center;
+        margin-top: 30px;
+        font-size: 15px;
+        color: white;
+        font-size: 15px;
+    }
+    .pass-row{
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        ion-input{
+            border-radius: 5px;
+            border: 1px solid darkgray;
+            color: white;
+            margin-top: 0px;
+        }
+    }
+    ion-input{
+        border-radius: 5px;
+        border: 1px solid darkgray;
+        color: white;
+        margin-top:50px;
+    }
+    .btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        margin-top: 50px;
+        p{
+            margin: 0px;
+            margin-left: 10px;
+        }
+        ion-button{
+            background: none;
+            margin-left: 30px;
+            border-radius: 5px;
+            font-size: 12px;
+            --background: none;
+            border: 1px solid white;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            --background-activated: rgb(28, 25, 34);
+
+        }
+    }
+}
+ 

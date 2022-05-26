@@ -1,0 +1,52 @@
+ {
+     
+        "Assets": [
+          "Bank Accounts – Transaction",
+          "Bank Accounts – Savings",
+          "Term Deposits",
+          "Shares",
+          "Investment Products/Platforms",
+          "Superannuation",
+          "Pension",
+          "Annuities",
+          "Home",
+          "Investment Property",
+          "Vehicles",
+          "Other"
+        ],
+        "Liabilities": [
+          "Home Loans",
+          "Investment Property Loans",
+          "Personal Loans",
+          "Credit Cards",
+          "Overdraft",
+          "Margin Lending",
+          "Line of Credit",
+          "Asset Financing",
+          "Buy now/pay later",
+          "Other"
+        ],
+         "Insurance > Life Insurance": [
+          "Life Cover – Super",
+          "TPD Cover – Super",
+          "Income Protection - Super",
+          "Life Cover – Non Super",
+          "TPD Cover – Non Super",
+          "Trauma Cover – Non Super",
+          "Income Protection – Non Super",
+          "Business Expenses – Non Super"
+        ],
+        "Insurance > General Insurance": [
+          "Compulsory Third Party (CTP) Motor Insurance",
+          "Car Insurance – Comprehensive",
+          "Home & Contents Insurance",
+          "Travel Insurance",
+          "Landlords Insurance",
+          "Workers Compensation Insurance",
+          "Professional Indemnity Insurance",
+          "Public Liability Insurance",
+          "Business Insurance",
+          "Health Insurance"
+        ]
+     
+ }

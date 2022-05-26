@@ -1,0 +1,35 @@
+ion-tab-bar{
+    // --background: black;
+    height: 100px;
+    border: none;
+    background-color: transparent;
+    --background: transparent;
+    ion-tab-button {
+        // for even tab buttons width (cater longer labels)
+        --padding-start: 5px;
+        --padding-end: 5px;
+        border-top-width: 2px;
+    
+        // dummy button for spacing purpose only
+        &.hide {
+          visibility: hidden;
+        }
+    
+        img {
+            margin-bottom: 5px;
+        }
+    
+        ion-label {
+          font-size: var(--theme-font-size-small);
+        }
+    
+        &.tab-selected {
+        //   border-top-style: solid;
+          ion-label{
+              color:#00b4e7 ;
+          }
+        }
+    }
+}
+
+ 

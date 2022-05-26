@@ -1,0 +1,64 @@
+ 
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-icon (click)="profile()" name="person" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+      <ion-icon (click)="logout()" name="log-out" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title>MY DOCUMENTS</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" class='ion-padding'>
+  <div class="header">
+    <ion-button><ion-icon name="cloud-upload"></ion-icon><ion-label style="margin-left: 5px;font-size: 12px;">UPLOAD DOCUEMENT</ion-label></ion-button>
+  </div>
+  <div class="content">
+    <ion-card *ngFor="let item of docs; let i=index">
+      <ion-row>
+        <ion-col class="n-col">
+          <div class="first-item">
+            <div class="title">Application Date</div>
+           <div class="detail">{{item.date}}</div>
+          </div>
+        </ion-col>
+        <ion-col class="t-col">
+          <div>
+            <div class="title">Document Type</div>
+            <div class="detail">{{item.documentType}}</div>
+          </div>
+        </ion-col>
+        <ion-col class="a-col">
+          <div>
+            <div class="title">Share with Adviser</div>
+            <div class="detail"><ion-checkbox checked="true" [(ngModel)]="item.share"></ion-checkbox></div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="n-col">
+          <div class="seconds-item">
+            <div class="title">Title</div>
+            <div class="detail">{{item.title}}</div>
+          </div>
+        </ion-col>
+        <ion-col class="t-col">
+          <div>
+            <div class="title">Type</div>
+            <div class="detail">{{item.type}}</div>
+          </div>
+        </ion-col>
+        <ion-col class="a-col">
+          <div>
+            <div class="title">actions</div>
+           <div class="detail">
+             <ion-icon name="eye" style="color: #00b4e7;font-size: 20px;"></ion-icon>
+             <ion-icon name="trash" style="color: red;font-size: 20px; margin-left: 10px;"></ion-icon>
+           </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+    
+</ion-content>
+  

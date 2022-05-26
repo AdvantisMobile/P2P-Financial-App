@@ -1,0 +1,70 @@
+ <div class="signup-content">
+  <div class="tlt-cont">
+    <ion-label> Manual Account</ion-label>
+  </div>
+  <div class="page-centered-element">
+    <div class="content">
+      <div class='cc'>
+        <div class="info-cont">
+          <div><ion-label>DISPLAY INFORMATION</ion-label></div>
+          <ion-row>
+             <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">NAME</p></ion-col>
+             <ion-col style="width: 70%; max-width: 70%;"><ion-input type="text" [(ngModel)]="name"></ion-input></ion-col>
+          </ion-row>
+        </div>
+        
+        <div class="map-cont">
+          <ion-label>ACCOUNT MAPPING</ion-label>
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">CATEGORY</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;">
+              <ion-select  placeholder="Assets" [(ngModel)]='category' (ionChange)="getValue()">
+                <ion-select-option *ngFor="let item of categoris;" [value]="item" >{{item.name}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">SUB CATEGORY</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;">
+              <ion-select  placeholder="Bank Accounts - Transaction" [(ngModel)]='subCategory'  (ionChange)="getSubValue()">
+                <ion-select-option *ngFor="let sub of subCategoris;" [value]="sub" >{{sub}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="hold-cont">
+          <ion-label>HOLDING</ion-label>
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">Address</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;"><ion-input type="text" [(ngModel)]="address"></ion-input></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">Purchase Price</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;"><ion-input type="text" [(ngModel)]="price"></ion-input></ion-col>
+          </ion-row>
+           
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">Purchase Date</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;"><ion-input type="text" [(ngModel)]="address"></ion-input></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col style="width: 30%; max-width: 30%;"><p style="font-size: 0.75rem;">Details</p></ion-col>
+            <ion-col style="width: 70%; max-width: 70%;"><ion-input type="text" [(ngModel)]="address"></ion-input></ion-col>
+          </ion-row>
+        </div>
+      </div> 
+      <div class="btn-cont">
+        <ion-button class="save-btn" (click)="onSave()">
+          <ion-icon name='save'></ion-icon>
+          <ion-label>SAVE</ion-label>
+        </ion-button>
+        <ion-button class="close-btn" (click)="onCancel()">
+          <ion-icon name='close'></ion-icon>
+          <ion-label>CLOSE</ion-label>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+   
+
+ </div>

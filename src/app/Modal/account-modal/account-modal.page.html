@@ -1,0 +1,123 @@
+<div class="live-content">
+  <ion-row class="header">
+    <ion-col class="tl-col">
+      <ion-label>Account Detail</ion-label>
+    </ion-col>
+    <ion-col class="btn-col">
+      <ion-icon name="close" (click)="onClose()"></ion-icon>
+    </ion-col>
+  </ion-row>
+  <div class="content">
+    <div class="info-cont" [hidden]="hasInfo">
+      <div class="info">
+        <ion-label>DISPLAY INFORMATION</ion-label>
+        <ion-row class="info-row">
+          <ion-col class="name-col">Name:</ion-col>
+          <ion-col>{{model.providerName}} ({{model.accountNumber}})</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="name-col">Balance:</ion-col>
+          <ion-col>${{model.balance.amount}}</ion-col>
+        </ion-row>
+      </div>
+      <div class="mapping">
+        <ion-label>ACCOUNT MAPPING</ion-label>
+        <ion-row class="map-row">
+          <ion-col class="t-col">Category:</ion-col>
+          <ion-col> 
+            <ion-select  placeholder="Assets" [(ngModel)]='category' (ionChange)="getValue()">
+              <ion-select-option *ngFor="let item of categoris;" [value]="item" >{{item.name}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          
+        </ion-row>
+        <ion-row class="map-row">
+          <ion-col class="t-col">Sub Category:</ion-col>
+          <ion-col> 
+            <ion-select  placeholder="Bank Accounts - Transaction" [(ngModel)]='subCategory'  (ionChange)="getSubValue()">
+              <ion-select-option *ngFor="let sub of subCategoris;" [value]="sub" >{{sub}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+        <ion-row class="map-row">
+          <ion-col class="t-col">Documents:</ion-col>
+          <ion-col> 
+             <ion-input type="file" placeholder="Drag & Drop Your Files or Browse" rowspan="3" style="--padding-start: 10px;"></ion-input>
+          </ion-col>
+        </ion-row>
+         
+      </div>
+    </div>
+    
+    <ion-row class="hold-row">
+      <ion-col><ion-label>Holdings</ion-label></ion-col>
+      <ion-col class="btn-col">
+        <ion-button (click)="holdRefresh()"><ion-icon name="refresh"></ion-icon><ion-label>REFRESH</ion-label></ion-button>
+      </ion-col>
+    </ion-row>
+    <div class="h-header">
+      <div>Description</div>
+      <div>Holding Type</div>
+      <div>Units</div>
+      <div>Unit Price</div>
+      <div>Value</div>
+      <div>Accounts</div>
+      <div>Vesting Data</div>
+      <div>Expiration Data</div>
+      <div>Details</div>
+    </div>
+    <div class="hold-content">
+      <ion-label>No Data</ion-label>
+    </div>
+
+    <ion-row class="trans-row">
+      <ion-col style="max-width: 35%; width: 35%;">
+        <div>Transactions</div>
+        <div class="l-cont">
+          <ion-button class="ref-btn" (click)="refTransaction()"><ion-icon name="refresh"></ion-icon><ion-label> </ion-label></ion-button>
+          <ion-button class="exp-btn" (click)="export()"><ion-icon name="cloud-download"></ion-icon><ion-label> </ion-label></ion-button>
+        </div>
+      </ion-col>
+      <ion-col style="max-width: 65%; width: 65%;">
+        <div style="text-align: right;">Add/Remove Manual Transactions</div>
+        <div class="r-cont">
+          <ion-button class="ref-btn" (click)="upload()"><ion-icon name="cloud-upload"></ion-icon><ion-label> </ion-label></ion-button>
+          <ion-button class="del-btn" (click)="delete()"><ion-icon name="trash" style="color: red;"></ion-icon><ion-label> </ion-label></ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+     <div class="cat-header">
+      <div>
+          <p>From Date</p>
+          <ion-input type="date" placeholder="15/02/2022" [(ngModel)]="fromDate"></ion-input>
+      </div>
+      <div>
+        <p>To Date</p>
+        <ion-input type="date" placeholder="15/02/2022" [(ngModel)]="toDate"></ion-input>
+      </div>
+      <div> 
+        <p></p>
+        <ion-select placeholder="Category" style="margin-top:20px; color:black">
+          <ion-select-option>All</ion-select-option>
+          <ion-select-option>Unmapped</ion-select-option>
+          <ion-select-option>Income</ion-select-option>
+          <ion-select-option>Transfer</ion-select-option>
+          <ion-select-option>Expense</ion-select-option>
+        </ion-select>
+      </div>
+     </div>
+
+    <div class="h-header">
+      <div>Date</div>
+      <div>Accounts</div>
+      <div>Base Type</div>
+      <div>Amount</div>
+      <div style="width: 150px;">Detail</div>
+      <div>Mapping</div>
+      <div>Actions</div>
+    </div>
+  </div>
+  <div class="footer">
+       <ion-button (click)="onClose()"><ion-icon name="close"></ion-icon><ion-label>CLOSE</ion-label></ion-button>
+  </div>
+</div>

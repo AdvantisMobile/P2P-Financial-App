@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-icon (click)="back()" name="arrow-back" style="font-size: 1.2rem; margin-left: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title>ADDED ACCOUNT LIST</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="page-centered-element">
+    <div id="container">
+      <ion-list lines="none">
+        <div class="live">
+          <ion-item *ngFor="let item of liveAccounts; let i=index" >
+            <div class="item-container">
+              <ion-row class="live-row" >
+                <ion-col class="name-col" (click)="showDetails(item)">
+                  <ion-label style="color: black;">{{item.name}}(accounts:{{item.count}})</ion-label>
+                </ion-col>
+                <ion-col class="detail-col">
+                  <div class="d-cont" style="color: black;">
+                    ${{item.amount}}
+                    <ion-icon name='refresh' (click)="refresh()" style="color: rgba(0, 0, 0, 0.54);"></ion-icon>
+                    <ion-icon name='trash'  (click)="delete()" style="color: rgb(255, 58, 40);"></ion-icon>
+                    <ion-icon name='folder' (click)="showDetails(item)" style="color: rgba(0, 0, 0, 0.54);"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <div class="details" [hidden]="item.show">
+                <ion-row class="d-row"  *ngFor="let acc of item.accounts; let i = index">
+                  <ion-col class="n-col">
+                    {{acc.providerName}}
+                  </ion-col>
+                  <ion-col class="in-col">
+                    <div style="color: rgb(10, 134, 240);">{{acc.accountType}}</div>
+                    <div>{{acc.accountNumber}}</div>
+                  </ion-col>
+                  <ion-col class="b-col">
+                    <div>Balance</div>
+                    <div>${{acc.balance.amount}}</div>
+                  </ion-col>
+                  <ion-col class="f-col">
+                    <div>Funds</div>
+                    <div style="color: rgb(10, 134, 240);">${{acc.availableBalance.amount}}</div>
+                  </ion-col>
+                  <ion-col class="i-col">
+                    <div class='icon-cont' ><ion-icon (click)="accountDetailsL(acc)" name="alert"></ion-icon></div>
+                  </ion-col>
+                </ion-row>
+            </div>
+            </div>
+          </ion-item>
+          
+         
+        </div>
+        <div class="manual">
+          <ion-row class="manual-row">
+            <ion-col class="name-col" (click)="showManualItems()">
+              <ion-label>Manual Added Account(accounts:{{manualCount}})</ion-label>
+            </ion-col>
+            <ion-col class="detail-col">
+              <div class="d-cont" style="color: black;">
+                ${{manualBalance}}
+                <ion-icon name='folder' (click)="showManualItems()" style="color: rgba(0, 0, 0, 0.54);"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="details" [hidden]="showManual">
+            <ion-row class="d-row" *ngFor="let mItem of manualProviders;let i = index">
+              <ion-col class="n-col">
+                {{mItem.name}}  
+              </ion-col>
+              <ion-col class="b-col">
+                <div>Premium p.a</div>
+                <div>$1200.00</div>
+              </ion-col>
+              <ion-col class="f-col">
+                <div >Coverage Level</div>
+                <div style="color: rgb(10, 134, 240);">${{mItem.insurance.coverageLevel}}</div>
+              </ion-col>
+              <ion-col class="i-col">
+                <div class='icon-cont' (click)="accountDetailsM(mItem)"><ion-icon name="alert" style="font-size: 12px;"></ion-icon></div>
+                <ion-icon name="trash" style="color: rgb(255, 58, 40); margin-left: 10px;" (click)="deleteItem()"></ion-icon>
+              </ion-col>
+            </ion-row>
+            
+        </div>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+  
+</ion-content>

@@ -1,0 +1,43 @@
+Backend API
+
+Yodlee provider
+(get from yodlee fast link result)
+
+get(post):
+    yodleeproviders/get
+    body: {
+        user_id: integer
+    }
+
+Save(post):
+    yodleeproviders/store
+    body: {
+        data: {
+            additionalStatus: string
+            fnToCall: string
+            providerAccountId: string
+            providerId: string
+            providerName: string
+            requestId: string
+            status: string
+
+            user_id: integer
+        }
+    }
+
+update(post): 
+    yodleeproviders/update/${id}
+    body: {
+        data: {
+            additionalStatus: string
+            fnToCall: string
+            providerAccountId: string
+            providerId: string
+            providerName: string
+            requestId: string
+            status: string
+        }
+    }
+
+delete(post): 
+    yodleeproviders/delete/${id}

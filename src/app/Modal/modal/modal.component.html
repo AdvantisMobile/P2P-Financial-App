@@ -1,0 +1,64 @@
+<div class="content"  >
+  <div class="refresh" [hidden]="refShow">
+    <div class="header">
+      <img src="assets/imgs/query.png" />
+    </div>
+    <div class="lbl">
+      <ion-label>Would you like to reload the financial data?</ion-label>
+    </div>
+    <div class="btn">
+      <ion-button (click)="onOK()"><ion-icon name="checkmark"></ion-icon><p>OK</p></ion-button>
+      <ion-button (click)="onCancel()"><ion-icon name="close"></ion-icon><p>CANCEL</p></ion-button>
+    </div>
+  </div>
+
+  <div class="update"  [hidden]="passShow">
+    <div class="header">
+      <img src="assets/imgs/query.png" />
+    </div>
+    <div class="lbl">
+      <ion-label>What is your current password?</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </div>
+    <div class="btn">
+      <ion-button (click)="onOK()" style="margin-left: 0px;"><ion-icon name="checkmark"></ion-icon><p>OK</p></ion-button>
+      <ion-button (click)="onCancel()"><ion-icon name="close"></ion-icon><p>CANCEL</p></ion-button>
+    </div>
+  </div>
+  <div class="update"  [hidden]="logoutShow">
+    <div class="header">
+      <img src="assets/imgs/query.png" />
+    </div>
+    <div class="lbl">
+      <ion-label>Are you sure you would like to log out?</ion-label>
+    </div>
+    <div class="btn">
+      <ion-button (click)="onOK()" style="margin-left: 0px;"><ion-icon name="checkmark"></ion-icon><p>OK</p></ion-button>
+      <ion-button (click)="onCancel()"><ion-icon name="close"></ion-icon><p>CANCEL</p></ion-button>
+    </div>
+  </div>
+  <div class="update"  [hidden]="profileShow">
+    <div class="header" style="border-bottom: 1px solid darkgray;padding-bottom: 15px;font-size:20px">
+      <!-- <img src="assets/imgs/query.png" /> -->
+      Update Profile
+    </div>
+    <div class="input-cont">
+      <ion-label>Update Password</ion-label>
+      <ion-row class="pass-row">
+        <ion-col style="text-align: right; max-width: 40%; width: 40%;">Password</ion-col>
+        <ion-col><ion-input type="password" [(ngModel)]="newPassword"></ion-input></ion-col>
+      </ion-row>
+
+      <ion-row class="pass-row">
+        <ion-col style="text-align: right;max-width: 40%; width: 40%;">Confirm Password</ion-col>
+        <ion-col><ion-input type="password" [(ngModel)]="confirmPassword"></ion-input></ion-col>
+      </ion-row>
+      
+    </div>
+    <div class="btn">
+      <ion-button (click)="onSave()" style="margin-left: 0px; color:rgb(8, 23, 235); border:1px solid rgb(8, 23, 235) ;"><ion-icon name="save"></ion-icon><p>UPDATE</p></ion-button>
+      <ion-button (click)="onCancel()"><ion-icon name="close"></ion-icon><p>CANCEL</p></ion-button>
+    </div>
+  </div>
+  
+</div>

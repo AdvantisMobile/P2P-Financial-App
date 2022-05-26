@@ -1,0 +1,22 @@
+<ion-content force-overscroll="true">
+  <gl-background-video src="assets/imgs/back.mp4"></gl-background-video>
+  <div class="page-centered-element">
+    <div class="content">
+      <div class="MuiTypography-root MuiTypography-h5 glow css-374sxd">P2P Client</div> 
+      <label class="MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-root MuiFormLabel-colorPrimary css-ssdyf">
+        <div style="text-align: center;">01010001000101011000</div>
+      </label>
+      <div class="buttons-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+          <ion-input type="email" formControlName="email" placeholder="Email" required></ion-input>
+          <ion-input type="password" formControlName="password" placeholder="Password" style="margin-top: 10px;" required></ion-input>
+          <p style="margin-top: 25px; text-align: center; color:red;font-size: 18px;" [hidden]="erroAuth">Error of the autentificación.</p>
+          <ion-button style="margin-top: 10px;" type="submit">LOG IN</ion-button>
+        </form>
+      </div>
+      <div style="text-align: center;margin-top: 10px;">
+        <ion-label (click)="onForgot()">FORGOTTEN PASSWORD</ion-label>
+      </div>
+    </div>
+  </div>
+</ion-content>

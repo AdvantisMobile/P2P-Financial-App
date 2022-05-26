@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-icon (click)="profile()" name="person" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+      <ion-icon (click)="logout()" name="log-out" style="font-size: 20px; margin-right: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title>MY POSITION</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div id="container">
+    <div style=" width: 100%;">
+      <div class="banner"></div>
+      <ion-list lines="none">
+        <ion-row style="max-width: 95%; width: 95%;">
+           <!-- <ion-col class="img-col">
+             <img src="assets/imgs/food.png" />
+           </ion-col> -->
+           <ion-col class="cont-col">
+             <ion-row class="c-row">
+               <ion-col class="l-col">
+                 <div class='l-cont'>
+                  <h4>1. ADD ACCOUNT</h4>
+                 </div>
+               </ion-col>
+               <ion-col class="b-col">
+                 <div class="btn-cont" (click)="addAccount()">
+                    <ion-icon name="arrow-forward" style="color: #00b4e7;"></ion-icon>
+                 </div>
+               </ion-col>
+             </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row style="max-width: 95%; width: 95%;">
+          <!-- <ion-col class="img-col">
+            <img src="assets/imgs/beverages.png" />
+          </ion-col> -->
+          <ion-col class="cont-col">
+            <ion-row class="c-row">
+              <ion-col class="l-col">
+                <div class='l-cont'>
+                 <h4>2. ADDED ACCOUNT LIST</h4>
+                </div>
+             </ion-col>
+              <ion-col class="b-col">
+                <div class="btn-cont" (click)="addAList()">
+                   <ion-icon name="arrow-forward" style="color: #00b4e7;"></ion-icon>
+                </div>
+              </ion-col>
+            </ion-row>
+            
+           </ion-col>
+        </ion-row>
+        <ion-row style="max-width: 95%; width: 95%;">
+        <!-- <ion-col class="img-col">
+          <img src="assets/imgs/desserts.png" />
+        </ion-col> -->
+        <ion-col class="cont-col">
+          <ion-row class="c-row">
+            <ion-col class="l-col">
+              <div class='l-cont'>
+               <h4 >3. MAPPING ADDED ACCOUNTS</h4>
+              </div>
+           </ion-col>
+            <ion-col class="b-col">
+              <div class="btn-cont" (click)="onMapping()">
+                 <ion-icon name="arrow-forward" style="color: #00b4e7;"></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+          
+         </ion-col>
+        </ion-row>
+        <ion-row style="max-width: 95%; width: 95%;">
+      <!-- <ion-col class="img-col">
+        <img src="assets/imgs/promotions.png" />
+      </ion-col> -->
+      <ion-col class="cont-col">
+        <ion-row class="c-row">
+          <ion-col class="l-col">
+            <div class='l-cont'>
+             <h4 >4. TOTAL</h4>
+            </div>
+         </ion-col>
+          <ion-col class="b-col">
+            <div class="btn-cont" (click)="onTotal()">
+               <ion-icon name="arrow-forward" style="color: #00b4e7;"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+       </ion-col>
+        </ion-row>
+      </ion-list>
+    </div>
+  </div>
+  <!-- <div class="page-centered-element">
+    <div class="content">
+      <div>
+        <ion-label style="font-weight: bold; font-size: 25px; color: black;">LET ME HELP YOU</ion-label>
+      </div>
+      <ion-button (click)="addAccount()"><div><p>1. ADD ACCOUNT</p><ion-icon name="arrow-forward"></ion-icon></div></ion-button>
+      <ion-button (click)="addAList()"><div><p>2. ADDED ACCOUNT LIST</p><ion-icon name="arrow-forward"></ion-icon></div></ion-button>
+      <ion-button (click)="onMapping()"><div><p>3. MAPPING ADDED ACCOUNTS</p><ion-icon name="arrow-forward"></ion-icon></div></ion-button>
+      <ion-button (click)="onTotal()"><div><p>4. TOTAL</p><ion-icon name="arrow-forward"></ion-icon></div></ion-button>
+    </div>
+  </div> -->
+</ion-content>

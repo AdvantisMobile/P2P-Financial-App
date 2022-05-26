@@ -1,0 +1,296 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-icon (click)="back()" name="arrow-back" style="font-size: 1.2rem; margin-left: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title style="padding-inline: 0px;">MAPPING ADDED ACCOUNTS</ion-title>
+  </ion-toolbar>
+</ion-header> 
+<ion-content [fullscreen]="true">
+  <div class="page-centered-element">
+    <div id="section">
+      <ion-segment [(ngModel)]="tab">
+        <ion-segment-button value="unmap">
+          <ion-label>Unmapped</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="assets">
+          <ion-label>Assets</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="lia">
+          <ion-label>Liabilities</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="insurance">
+          <ion-label style="width: 100%;white-space: break-spaces;">Life Insurance</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="general">
+          <ion-label style="width: 100%;white-space: break-spaces;">General Insurance</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+    <div id="container">
+      <div class="content" [ngSwitch]="tab">
+        <ion-list *ngSwitchCase="'unmap'" lines="none">
+          <ion-label style="font-weight: bold;">UnMapped</ion-label>
+          <ion-col *ngFor="let item of noProviders; let i=index;">
+            <div class="item-content">
+              <ion-label class="tlt">{{acc.providerName}} (total:0)</ion-label>
+              <div class="card-content">
+                <ion-label [hidden]="item.show">No Data</ion-label>
+                <ion-card [hidden]="!item.show">
+                  <ion-card-content>
+                    <ion-row>
+                      <ion-col>
+                          <div style="color: #0a86f0;">{{acc.accountType}}</div>
+                          <div>{{item.accountNumber}}</div>
+                      </ion-col>
+                      <ion-col>
+                          <div>FUNDS</div>
+                          <div style="color: #0a86f0;">${{acc.balance.amount}}</div>
+                      </ion-col>
+                      <ion-col class="i-col">
+                        <div class='icon-cont' (click)="accountDetails()"><ion-icon name="alert"></ion-icon></div>
+                      </ion-col>
+                    </ion-row>
+                    <div class="n-cont">
+                      <ion-label>{{acc?.providerName}}</ion-label>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </div>
+            </div>
+          </ion-col>
+        </ion-list>
+        <ion-list *ngSwitchCase="'assets'" lines="none">
+          <ion-label style="font-weight: bold;">Assets</ion-label>
+          <ion-col *ngFor="let item of assetsProviders; let i=index;">
+            <div class="item-content">
+              <ion-label class="tlt">{{item.sub_cat}} (total:0)</ion-label>
+              <div class="card-content">
+                <ion-label [hidden]="item.show">No Data</ion-label>
+                <div [hidden]="!item.show" >
+                  <div [hidden]="item.isManual" class="live-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;" >
+                      <ion-card-content>
+                        <ion-row>
+                          <ion-col>
+                              <div style="color: #0a86f0;">{{acc?.accountType}}</div>
+                              <div>{{acc?.accountNumber}}</div>
+                          </ion-col>
+                          <ion-col>
+                              <div>FUNDS</div>
+                              <div style="color: #0a86f0;">${{acc?.balance?.amount}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetails(acc)"><ion-icon name="alert"></ion-icon></div>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>{{acc?.providerName}}</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div [hidden]="!item.isManual" class="manual-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;">
+                      <ion-card-content>
+                        <ion-row class="manual-row">
+                          <ion-col clas="n-col" style="width: 30%;max-width: 30%;display: flex;align-items: center;color:rgb(10, 134, 240);">
+                            {{acc.name}}  
+                          </ion-col>
+                          <ion-col class="c-col" style="width: 50%;max-width: 50%;">
+                            <div>Coverage Level</div>
+                            <div style="color: rgb(10, 134, 240);">${{acc.insurance.coverageLevel}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetailsM(mItem)"><ion-icon name="alert" style="font-size: 12px;"></ion-icon></div>
+                            <ion-icon name="trash" style="color: rgb(255, 58, 40); margin-left: 10px; font-size: 1.2rem;" (click)="deleteItem(acc)"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>Manually Added Account</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-list>
+        <ion-list *ngSwitchCase="'lia'" lines="none">
+          <ion-label style="font-weight: bold;">Liabilities</ion-label>
+          <ion-col *ngFor="let item of liaProviders; let i=index;">
+            <div class="item-content">
+              <ion-label class="tlt">{{item.sub_cat}} (total:0)</ion-label>
+              <div class="card-content">
+                <ion-label [hidden]="item.show">No Data</ion-label>
+                <div [hidden]="!item.show" >
+                  <div [hidden]="item.isManual" class="live-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;" >
+                      <ion-card-content>
+                        <ion-row>
+                          <ion-col>
+                              <div style="color: #0a86f0;">{{acc?.accountType}}</div>
+                              <div>{{acc?.accountNumber}}</div>
+                          </ion-col>
+                          <ion-col>
+                              <div>FUNDS</div>
+                              <div style="color: #0a86f0;">${{acc?.balance?.amount}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetails(acc)"><ion-icon name="alert"></ion-icon></div>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>{{acc?.providerName}}</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div [hidden]="!item.isManual" class="manual-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;">
+                      <ion-card-content>
+                        <ion-row class="manual-row">
+                          <ion-col clas="n-col" style="width: 30%;max-width: 30%;display: flex;align-items: center;color:rgb(10, 134, 240);">
+                            {{acc.name}}  
+                          </ion-col>
+                          <ion-col class="c-col" style="width: 50%;max-width: 50%;">
+                            <div>Coverage Level</div>
+                            <div style="color: rgb(10, 134, 240);">${{acc.insurance.coverageLevel}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetailsM(mItem)"><ion-icon name="alert" style="font-size: 12px;"></ion-icon></div>
+                            <ion-icon name="trash" style="color: rgb(255, 58, 40); margin-left: 10px; font-size: 1.2rem;" (click)="deleteItem(acc)"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>Manually Added Account</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-list>
+        <ion-list *ngSwitchCase="'insurance'" lines="none">
+          <ion-label style="font-weight: bold;">Life Insurance</ion-label>
+          <ion-col *ngFor="let item of insuLifeProviders; let i=index;">
+            <div class="item-content">
+              <ion-label class="tlt">{{item.sub_cat}} (total:0)</ion-label>
+              <div class="card-content">
+                <ion-label [hidden]="item.show">No Data</ion-label>
+                <div [hidden]="!item.show" >
+                  <div [hidden]="item.isManual" class="live-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;" >
+                      <ion-card-content>
+                        <ion-row>
+                          <ion-col>
+                              <div style="color: #0a86f0;">{{acc?.accountType}}</div>
+                              <div>{{acc?.accountNumber}}</div>
+                          </ion-col>
+                          <ion-col>
+                              <div>FUNDS</div>
+                              <div style="color: #0a86f0;">${{acc?.balance?.amount}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetails(acc)"><ion-icon name="alert"></ion-icon></div>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>{{acc?.providerName}}</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div [hidden]="!item.isManual" class="manual-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;">
+                      <ion-card-content>
+                        <ion-row class="manual-row">
+                          <ion-col clas="n-col" style="width: 30%;max-width: 30%;display: flex;align-items: center;color:rgb(10, 134, 240);">
+                            {{acc.name}}  
+                          </ion-col>
+                          <ion-col class="c-col" style="width: 50%;max-width: 50%;">
+                            <div>Coverage Level</div>
+                            <div style="color: rgb(10, 134, 240);">${{acc.insurance.coverageLevel}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetailsM(mItem)"><ion-icon name="alert" style="font-size: 12px;"></ion-icon></div>
+                            <ion-icon name="trash" style="color: rgb(255, 58, 40); margin-left: 10px; font-size: 1.2rem;" (click)="deleteItem(acc)"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>Manually Added Account</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-list>
+        <ion-list *ngSwitchCase="'general'" lines="none">
+          <ion-label style="font-weight: bold;">General Insurance</ion-label>
+          <ion-col *ngFor="let item of insuGeneralProviders; let i=index;">
+            <div class="item-content">
+              <ion-label class="tlt">{{item.sub_cat}} (total:0)</ion-label>
+              <div class="card-content">
+                <ion-label [hidden]="item.show">No Data</ion-label>
+                <div [hidden]="!item.show" >
+                  <div [hidden]="item.isManual" class="live-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;" >
+                      <ion-card-content>
+                        <ion-row>
+                          <ion-col>
+                              <div style="color: #0a86f0;">{{acc?.accountType}}</div>
+                              <div>{{acc?.accountNumber}}</div>
+                          </ion-col>
+                          <ion-col>
+                              <div>FUNDS</div>
+                              <div style="color: #0a86f0;">${{acc?.balance?.amount}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetails(acc)"><ion-icon name="alert"></ion-icon></div>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>{{acc?.providerName}}</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                  <div [hidden]="!item.isManual" class="manual-row">
+                    <ion-card  *ngFor="let acc of item.accounts; let i=index;">
+                      <ion-card-content>
+                        <ion-row class="manual-row">
+                          <ion-col clas="n-col" style="width: 30%;max-width: 30%;display: flex;align-items: center;color:rgb(10, 134, 240);">
+                            {{acc.name}}  
+                          </ion-col>
+                          <ion-col class="c-col" style="width: 50%;max-width: 50%;">
+                            <div>Coverage Level</div>
+                            <div style="color: rgb(10, 134, 240);">${{acc.insurance.coverageLevel}}</div>
+                          </ion-col>
+                          <ion-col class="i-col">
+                            <div class='icon-cont' (click)="accountDetailsM(mItem)"><ion-icon name="alert" style="font-size: 12px;"></ion-icon></div>
+                            <ion-icon name="trash" style="color: rgb(255, 58, 40); margin-left: 10px; font-size: 1.2rem;" (click)="deleteItem(acc)"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                        <div class="n-cont">
+                          <ion-label>Manually Added Account</ion-label>
+                        </div>
+                      </ion-card-content>
+                    </ion-card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+ 

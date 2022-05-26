@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-icon (click)="back()" name="arrow-back" style="font-size: 1.2rem; margin-left: 10px;"></ion-icon>
+    </ion-buttons>
+    <ion-title>WELCOME TO MY POSITION</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content  >
+  <div class="page-centered-element">
+    <div class="content">
+        <ion-card class="live-card">
+           <ion-card-title>Lets Start By Adding and Displaying Your Accounts</ion-card-title>
+           <ion-card-content>
+             <ion-button (click)="onLive()"><ion-icon name="add"></ion-icon><p>LIVE ACCOUNT</p></ion-button>
+             <ion-row class="warnning" [hidden]="showLiveWarning">
+               <ion-col style="width: 10%;max-width: 10%; padding: 0px;"><div class='icon-cont'><ion-icon name="alert"></ion-icon></div></ion-col>
+               <ion-col style="width: 80%;max-width: 80%;"><p>Don't worry, this is just information which will be used for display & suggestions. Transactions cannot be made via any added accounts in P2P Client</p></ion-col>
+               <ion-col style="width: 10%;max-width: 10%;"><ion-icon name="close"(click)="closeLW()" style="color: gray;"></ion-icon></ion-col>
+             </ion-row>
+             <!-- <div class="warnning" [hidden]="showLiveWarning">
+              <ion-icon name="alert"></ion-icon>
+              <p>Don't worry, this is just information which will be used for display & suggestions. Transactions cannot be made via any added accounts in P2P Client</p>
+             </div> -->
+             
+           </ion-card-content>
+        </ion-card>
+
+        <ion-card class="manual-card">
+          <ion-card-title>Or Add An Account Manually</ion-card-title>
+          <ion-card-content>
+            <ion-button (click)="onManual()"><ion-icon name="add"></ion-icon><p>MANUAL ACCOUNT</p></ion-button>
+            <ion-row class="warnning" [hidden]="showManualWarning">
+              <ion-col style="width: 10%;max-width: 10%; padding: 0px;"><div class='icon-cont'><ion-icon name="alert"></ion-icon></div></ion-col>
+              <ion-col style="width: 80%;max-width: 80%;"><p>You will need to help me keep Manually added accounts up to date over time</p></ion-col>
+              <ion-col style="width: 10%;max-width: 10%;"><ion-icon name="close"(click)="closeMW()" style="color: gray;"></ion-icon></ion-col>
+            </ion-row>
+            <!-- <div class="warnning" [hidden]="showManualWarning">
+             <ion-icon name="alert"></ion-icon>
+             <p> You will need to help me keep Manually added accounts up to date over time</p>
+            </div> -->
+            
+          </ion-card-content>
+       </ion-card>
+    </div>
+  </div>
+</ion-content>
